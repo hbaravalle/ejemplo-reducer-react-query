@@ -1,23 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import { useReducer } from "react";
+import "./App.css";
+import DetailCard from "./components/DetailCard";
+import EmptyCard from "./components/EmptyCard";
+import History from "./components/History";
+
+const initialState = {
+  search: "",
+  searchHistory: [],
+};
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div className="container">
+      <header>
+        <h1>Devfinder</h1>
+        <form>
+          <label htmlFor="search">
+            <input
+              type="text"
+              id="search"
+              name="search"
+              placeholder="Search Github username_"
+              autoComplete="off"
+            />
+            <button type="submit">Search</button>
+          </label>
+        </form>
       </header>
+      <div className="result">
+        <DetailCard />
+      </div>
+      <History />
     </div>
   );
 }
